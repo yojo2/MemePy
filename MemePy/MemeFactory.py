@@ -114,17 +114,23 @@ class MemeFactory:
         for i in range(len(self.meme_image.text_zones)):
             if i == len(self.texts):
                 break
-            text_type = TextType.Text
-            if str.startswith(self.texts[i], "<https://") and str.endswith(self.texts[i], ">"):
-                text_type = TextType.Image
 
             zone = self.meme_image.text_zones[i]
+
+            text_type = TextType.Text
+            text_content = self.texts[i]
+
+            if str.startswith(text_content, "<https://") and str.endswith(text_content, ">"):
+                text_type = TextType.Image
+            elif zone.all_caps:
+                text_content = self.texts[i].upper()
+
             if zone.angle == 0:
-                self.draw_text_zone(zone, self.texts[i], text_type, drawer)
+                self.draw_text_zone(zone, text_content, text_type, drawer)
             else:
                 self.apply_rotation(zone.angle)
                 drawer = ImageDraw.Draw(self.output_image)
-                self.draw_text_zone(zone, self.texts[i], text_type, drawer)
+                self.draw_text_zone(zone, text_content, text_type, drawer)
                 self.apply_rotation(-zone.angle)
                 self.post_rotation_crop()
 
@@ -145,7 +151,7 @@ class MemeFactory:
             text_zone.pos[0] + margins[0],
             text_zone.pos[1] + margins[1]
         )
-        self.output_image.paste(img, pos)
+        self.output_image.paste(img, pos, img.convert("RGBA"))
 
 
     def resize_image(self, img, text_zone_dimensions):
@@ -164,13 +170,31 @@ class MemeFactory:
                     options.append(o)
                     args[i] = ""
         self.options = options
-        self.texts:str = list(filter("".__ne__, args))
+        self.texts = list(filter("".__ne__, args))
 
 
     @staticmethod
     def draw_text(text_zone, text, drawer):
+        def draw_text_on_image(tz, t, d, sp, x, y, black):
+            # 101 / 96 magic value calculated for 96px Impact, might be reasonable to change this to something more universal
+            text_offset = round(tz.font_size * sp.count("\n") * 101 / 96) if tz.adjust_multiline else 0
+
+            pos = (
+                tz.pos[0]+x + margins[0],
+                tz.pos[1]+y-text_offset + margins[1]
+            )
+            d.text(
+                pos,
+                sp,
+                "black" if black else "white",
+                tz.font,
+                align="center"
+            )
+        
+        split_text = split_line(text, text_zone.font, text_zone.dimensions[0])
+        
         margins = list(get_textbox_margins(
-            split_line(text, text_zone.font, text_zone.dimensions[0]),
+            split_text,
             text_zone.font,
             text_zone.dimensions,
             drawer
@@ -179,16 +203,17 @@ class MemeFactory:
             if margins[i] < 0 or not text_zone.centering[i]:
                 margins[i] = 0
 
-        pos = (
-            text_zone.pos[0] + margins[0],
-            text_zone.pos[1] + margins[1]
-        )
-        drawer.text(
-            pos,
-            split_line(text, text_zone.font, text_zone.dimensions[0]),
-            text_zone.text_color,
-            text_zone.font
-        )
+        if text_zone.outline:
+            # returns 1px outline for fonts < 32px, 3px outline for fonts >= 72px
+            outline_offset = round((0.00001157407 * float(text_zone.font_size * text_zone.font_size)) + (0.02708333333 * text_zone.font_size) + 0.5)
+
+            draw_text_on_image(text_zone, text, drawer, split_text, outline_offset, 0, not text_zone.black)
+            draw_text_on_image(text_zone, text, drawer, split_text, -outline_offset, 0, not text_zone.black)
+            draw_text_on_image(text_zone, text, drawer, split_text, 0, outline_offset, not text_zone.black)
+            draw_text_on_image(text_zone, text, drawer, split_text, 0, -outline_offset, not text_zone.black)
+        
+        draw_text_on_image(text_zone, text, drawer, split_text, 0, 0, text_zone.black)
+
 
 
 def get_centered_image_margins(current_dimensions, max_dimensions):

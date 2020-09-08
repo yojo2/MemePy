@@ -73,3 +73,21 @@ MemePy <path> <template> <*args> <*options>
 - __\*args__ are all arguments to be placed onto the template (either texts or images).
 
 - __\*options__ are the options that modify behavior of the generation.
+
+## Changes from the original repo by julianbrandt/MemePy 
+
+- embedded images no longer lose transparency
+- added switch for text color (black/white, defaults to white)
+- added switch for text outline (defaults to false) - a very crude implementation
+- added switch for shifting text upwards if it contains multiple lines (defaults to false)
+- added switch for making text all uppercase (defaults to false)
+- output filename is no longer hardcoded, output path should contain filename
+- removed type hinting (`:str`) to make the code compliant with Python 3.4
+- changed the supplied font from `Black Chancery` to `Enchanted Land`, because the former didn't contain Polish diacritics
+
+### TODO
+
+- more memes
+- regex-based meme names
+- WYSIWYG meme editor
+- switch for automatically decreasing the font size if the text is too large to fit

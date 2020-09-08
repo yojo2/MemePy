@@ -40,6 +40,7 @@ def parse_text_zone_json(source, resource_path):
         (int(source["dimensions"][0]), int(source["dimensions"][1])),
         font
     )
+    zone.font_size = int(source["font_size"])
     for opt in source:
         a = source[opt]
         if opt == "angle":
@@ -50,6 +51,14 @@ def parse_text_zone_json(source, resource_path):
             zone.centering = (str2bool(a[0]), str2bool(a[1]))
         elif opt == "optional":
             zone.optional = str2bool(a)
+        elif opt == "black":
+            zone.black = str2bool(a)
+        elif opt == "outline":
+            zone.outline = str2bool(a)
+        elif opt == "all_caps":
+            zone.all_caps = str2bool(a)
+        elif opt == "adjust_multiline":
+            zone.adjust_multiline = str2bool(a)
     return zone
 
 

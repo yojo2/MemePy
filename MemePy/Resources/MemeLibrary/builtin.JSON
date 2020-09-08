@@ -6,13 +6,17 @@
         "pos": [60, 0],
         "dimensions": [400, 95],
         "font": "arial.ttf",
-        "font_size": 24
+        "font_size": 24,
+        "black": "True",
+        "outline": "False"
       },
       {
         "pos": [120, 100],
         "dimensions": [350, 100],
         "font": "arial.ttf",
-        "font_size": 24
+        "font_size": 24,
+        "black": "True",
+        "outline": "False"
       }
     ]
   },
@@ -24,7 +28,9 @@
         "dimensions": [220, 90],
         "font": "arial.ttf",
         "font_size": 20,
-        "centering": ["False", "True"]
+        "centering": ["False", "True"],
+        "black": "True",
+        "outline": "False"
       }
     ]
   },
@@ -36,7 +42,10 @@
         "dimensions": [400, 50],
         "font": "impact.ttf",
         "font_size": 54,
-        "centering": ["True", "False"]
+        "centering": ["True", "False"],
+        "black": "True",
+        "outline": "False",
+        "all_caps": "True"
       }
     ]
   },
@@ -48,14 +57,16 @@
         "dimensions": [200, 150],
         "font": "arial.ttf",
         "font_size": 36,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       },
       {
       "pos": [95, 380],
         "dimensions": [110, 75],
         "font": "arial.ttf",
         "font_size": 24,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       }
     ]
   },
@@ -68,7 +79,8 @@
         "font": "arial.ttf",
         "font_size": 24,
         "angle": 30,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       }
     ]
   },
@@ -93,7 +105,8 @@
         "dimensions": [230, 40],
         "font": "arial.ttf",
         "font_size": 20,
-        "centering": ["True", "False"]
+        "centering": ["True", "False"],
+        "black": "True"
       }
     ]
   },
@@ -105,21 +118,24 @@
         "dimensions": [200, 200],
         "font": "arial.ttf",
         "font_size": 40,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       },
       {
         "pos": [470, 100],
         "dimensions": [300, 250],
         "font": "arial.ttf",
         "font_size": 40,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       },
       {
         "pos": [10, 750],
         "dimensions": [200, 250],
         "font": "arial.ttf",
         "font_size": 40,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       }
     ]
   },
@@ -131,14 +147,16 @@
         "dimensions": [370, 210],
         "font": "arial.ttf",
         "font_size": 40,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       },
       {
         "pos": [310, 270],
         "dimensions": [370, 210],
-        "font": "BLKCHCRY.TTF",
-        "font_size": 45,
-        "centering": ["True", "True"]
+        "font": "EnchantedLand.otf",
+        "font_size": 50,
+        "centering": ["True", "True"],
+        "black": "True"
       }
     ]
   },
@@ -171,7 +189,8 @@
         "dimensions": [200, 200],
         "font": "arial.ttf",
         "font_size": 36,
-        "centering": ["True", "False"]
+        "centering": ["True", "False"],
+        "black": "True"
       },
       {
         "pos": [860, 800],
@@ -179,7 +198,8 @@
         "font": "arial.ttf",
         "font_size": 36,
         "centering": ["True", "False"],
-        "optional": "True"
+        "optional": "True",
+        "black": "True"
       }
     ]
   },
@@ -191,7 +211,8 @@
         "dimensions": [342, 116],
         "font": "impact.ttf",
         "font_size": 72,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "all_caps": "True"
       },
       {
         "pos": [951, 456],
@@ -199,7 +220,8 @@
         "font": "impact.ttf",
         "font_size": 72,
         "centering": ["True", "True"],
-        "optional": "True"
+        "optional": "True",
+        "all_caps": "True"
       }
     ]
   },
@@ -211,7 +233,9 @@
         "dimensions": [1069, 139],
         "font": "impact.ttf",
         "font_size": 96,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "all_caps": "True",
+        "adjust_multiline": "True"
       },
       {
         "pos": [391, 328],
@@ -219,7 +243,8 @@
         "font": "impact.ttf",
         "font_size": 72,
         "centering": ["True", "True"],
-        "optional": "True"
+        "optional": "True",
+        "all_caps": "True"
       }
     ]
   },
@@ -231,14 +256,16 @@
         "dimensions": [126, 50],
         "font": "arial.ttf",
         "font_size": 24,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       },
       {
         "pos": [272, 41],
         "dimensions": [122, 77],
         "font": "arial.ttf",
         "font_size": 24,
-        "centering": ["True", "True"]
+        "centering": ["True", "True"],
+        "black": "True"
       }
     ]
   }
